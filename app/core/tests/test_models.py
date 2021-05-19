@@ -48,3 +48,10 @@ class ModelTests(TestCase):
             name='Vegan'
         )
         self.assertEqual(str(tag), tag.name)
+
+    def test_ingredient_str(self):
+        ingredient = models.Ingredient.objects.create(
+            user=simple_user(),
+            name='Vegan'
+        )
+        self.assertEqual(str(ingredient), ingredient.name)
