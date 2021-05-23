@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from core import models
 
 
-def simple_user(email='test@gamil.com', password='123456'):
+def sample_user(email='test@gamil.com', password='123456'):
     return get_user_model().objects.create_user(
         email=email,
         password=password
@@ -44,14 +44,23 @@ class ModelTests(TestCase):
 
     def test_tag_str(self):
         tag = models.Tag.objects.create(
-            user=simple_user(),
+            user=sample_user(),
             name='Vegan'
         )
         self.assertEqual(str(tag), tag.name)
 
     def test_ingredient_str(self):
         ingredient = models.Ingredient.objects.create(
-            user=simple_user(),
+            user=sample_user(),
             name='Vegan'
         )
         self.assertEqual(str(ingredient), ingredient.name)
+
+    def test_recipe_str(self):
+        recipe = models.Recipe.objects.create(
+            user=sample_user(),
+            title='steak and mushroom sauce',
+            time_minutes=5,
+            price=5.00
+        )
+        self.assertEqual(str(recipe), recipe.title)
