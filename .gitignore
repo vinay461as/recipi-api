@@ -1,0 +1,6 @@
+#pycharm
+__pycache__
+.idea
+
+#other
+*.txt
